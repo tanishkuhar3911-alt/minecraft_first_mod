@@ -1,0 +1,25 @@
+{
+  "minecraft:oak_log": {
+    "default": "minecraft:block/oak_log_3d",
+    "conditions": [
+      {
+        "model": "minecraft:block/oak_log_grounded",
+        "when_neighbor": {
+          "down": "!minecraft:oak_log"
+        }
+      }
+    ]
+  },
+
+  "minecraft:birch_log": {
+    "default": "minecraft:block/birch_log_3d",
+    "conditions": [
+      {
+        "model": "minecraft:block/birch_log_grounded",
+        "when_neighbor": {
+          "down": "!minecraft:birch_log"
+        }
+      }
+    ]
+  }
+}
