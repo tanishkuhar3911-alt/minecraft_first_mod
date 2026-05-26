@@ -1,0 +1,27 @@
+name: Build Mod
+on: [push, workflow_dispatch] # Allows you to manually trigger it too
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21' # Change to 17 if building an older mod (like Minecraft 1.18-1.20.4)
+
+      - name: Make gradlew executable
+        run: chmod +x gradlew
+
+      - name: Build with Gradle
+        run: ./gradlew build
+
+      - name: Upload Finished Mod Jar
+        uses: actions/upload-artifact@v4
+        with:
+          name: compiled-mod
+          path: build/libs/*.jar
